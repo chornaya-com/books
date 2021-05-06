@@ -4,7 +4,7 @@ import {BookCard} from '../BookCard/BookCard';
 import * as cn from './BooksPage.module.css';
 
 export function BooksPage(props) {
-    const {books, fetchBooks} = props;
+    const {books, numberOfPages, fetchBooks} = props;
 
     React.useEffect(() => {
         fetchBooks();
@@ -19,7 +19,7 @@ export function BooksPage(props) {
                 ))}
             </div>
             <div className={cn.paginationContainer}>
-                <Pagination count={10} color="secondary" />
+                <Pagination count={numberOfPages} color="secondary" />
             </div>
         </div>
     );
