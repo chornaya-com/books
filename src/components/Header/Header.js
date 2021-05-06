@@ -12,7 +12,7 @@ export function Header() {
                 <div className={cn.title}>Books</div>
 
                 <div className={cn.loader}>
-                    <CircularProgress color="primary" />
+                    <CircularProgress color="secondary" />
                 </div>
             </div>
             <div>
@@ -24,7 +24,7 @@ export function Header() {
                     size="small"
                 />
                 <IconButton type={'submit'} aria-label="search">
-                    <SearchIcon fontSize="small" color="primary" />
+                    <SearchIcon fontSize="small" color="secondary" />
                 </IconButton>
             </div>
         </div>
