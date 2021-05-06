@@ -1,10 +1,10 @@
 import React from 'react';
 import {Provider} from 'react-redux';
 import {store} from './redux/store';
-import {Header} from './components/Header/Header';
 import {createMuiTheme} from '@material-ui/core/styles';
 import {ThemeProvider} from '@material-ui/styles';
 import {BooksPageConnected} from './components/BooksPage/BooksPage.connected';
+import {HeaderConnected} from "./components/Header/Header.connected";
 
 function App() {
     const theme = createMuiTheme({
@@ -27,7 +27,7 @@ function App() {
     return (
         <Provider store={store}>
             <ThemeProvider theme={theme}>
-                <Header />
+                <HeaderConnected />
                 <BooksPageConnected />
             </ThemeProvider>
         </Provider>

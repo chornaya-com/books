@@ -1,8 +1,9 @@
-import {SET_BOOKS} from './actions';
+import {SET_BOOKS, SET_IS_LOADING} from './actions';
 
 export const initialBooksState = {
     books: [],
     count: 0,
+    isLoading: false,
 };
 
 export function booksReducer(state = initialBooksState, action) {
@@ -24,6 +25,12 @@ export function booksReducer(state = initialBooksState, action) {
                 ...state,
                 books,
                 count: action.payload.count,
+            };
+        }
+        case SET_IS_LOADING: {
+            return {
+                ...state,
+                isLoading: action.payload,
             };
         }
 

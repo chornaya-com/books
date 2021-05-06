@@ -5,15 +5,17 @@ import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-export function Header() {
+export function Header(props) {
+    const {isLoading} = props;
     return (
         <div className={cn.headerContainer}>
             <div className={cn.logoContainer}>
                 <div className={cn.title}>Books</div>
-
-                <div className={cn.loader}>
-                    <CircularProgress color="secondary" />
-                </div>
+                {isLoading && (
+                    <div className={cn.loader}>
+                        <CircularProgress color="secondary" />
+                    </div>
+                )}
             </div>
             <div>
                 <TextField

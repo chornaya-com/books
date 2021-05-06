@@ -1,8 +1,9 @@
-import {setBooks} from './actions';
+import {setBooks, setIsLoading} from './actions';
 
 export function fetchBooks(pageNumber = 1, searchText = '') {
     return (dispatch) => {
         const booksUrl = 'http://nyx.vima.ekt.gr:3000/api/books';
+        dispatch(setIsLoading(true));
         fetch(booksUrl, {
             method: 'post',
             headers: {
@@ -18,6 +19,7 @@ export function fetchBooks(pageNumber = 1, searchText = '') {
             .then((result) => {
                 const {books, count} = result;
                 dispatch(setBooks(books, count));
+                dispatch(setIsLoading(false));
             })
             .catch((error) => {
                 console.error(error);
