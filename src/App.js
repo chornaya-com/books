@@ -1,8 +1,10 @@
 import React from 'react';
-import {BooksPage} from './components/BooksPage/BooksPage';
+import {Provider} from 'react-redux';
+import {store} from './redux/store';
 import {Header} from './components/Header/Header';
 import {createMuiTheme} from '@material-ui/core/styles';
 import {ThemeProvider} from '@material-ui/styles';
+import {BooksPageConnected} from './components/BooksPage/BooksPage.connected';
 
 function App() {
     const theme = createMuiTheme({
@@ -23,10 +25,12 @@ function App() {
         },
     });
     return (
-        <ThemeProvider theme={theme}>
-            <Header />
-            <BooksPage />
-        </ThemeProvider>
+        <Provider store={store}>
+            <ThemeProvider theme={theme}>
+                <Header />
+                <BooksPageConnected />
+            </ThemeProvider>
+        </Provider>
     );
 }
 
