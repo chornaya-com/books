@@ -4,31 +4,49 @@ import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import {useHistory, Link} from 'react-router-dom';
 
 export function Header(props) {
     const {isLoading} = props;
+    const history = useHistory();
+    const [searchText, setSearchText] = React.useState('');
+
+    const search = (event) => {
+        event.preventDefault();
+        history.push(`/1/${searchText}`);
+    };
+
+    const onChange = (event) => {
+        setSearchText(event.target.value);
+    };
+
     return (
         <div className={cn.headerContainer}>
             <div className={cn.logoContainer}>
-                <div className={cn.title}>Books</div>
+                <Link className={cn.title} to={'/'}>
+                    Books
+                </Link>
                 {isLoading && (
                     <div className={cn.loader}>
                         <CircularProgress color="secondary" />
                     </div>
                 )}
             </div>
-            <div>
+
+            <form onSubmit={search}>
                 <TextField
                     className={cn.inputField}
                     color="secondary"
                     label="Search..."
                     variant="outlined"
                     size="small"
+                    value={searchText}
+                    onChange={onChange}
                 />
                 <IconButton type={'submit'} aria-label="search">
                     <SearchIcon fontSize="small" color="secondary" />
                 </IconButton>
-            </div>
+            </form>
         </div>
     );
 }

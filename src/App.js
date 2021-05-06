@@ -4,7 +4,8 @@ import {store} from './redux/store';
 import {createMuiTheme} from '@material-ui/core/styles';
 import {ThemeProvider} from '@material-ui/styles';
 import {BooksPageConnected} from './components/BooksPage/BooksPage.connected';
-import {HeaderConnected} from "./components/Header/Header.connected";
+import {HeaderConnected} from './components/Header/Header.connected';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 function App() {
     const theme = createMuiTheme({
@@ -27,8 +28,14 @@ function App() {
     return (
         <Provider store={store}>
             <ThemeProvider theme={theme}>
-                <HeaderConnected />
-                <BooksPageConnected />
+                <Router>
+                    <HeaderConnected />
+                    <Switch>
+                        <Route path="/:page?/:searchText?">
+                            <BooksPageConnected />
+                        </Route>
+                    </Switch>
+                </Router>
             </ThemeProvider>
         </Provider>
     );

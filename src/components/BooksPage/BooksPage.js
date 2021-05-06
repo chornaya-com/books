@@ -2,14 +2,18 @@ import React from 'react';
 import Pagination from '@material-ui/lab/Pagination';
 import {BookCard} from '../BookCard/BookCard';
 import * as cn from './BooksPage.module.css';
+import {useParams, useHistory} from 'react-router-dom';
 
 export function BooksPage(props) {
     const {books, numberOfPages, fetchBooks} = props;
+    const {page, searchText = ''} = useParams();
+    const pageNumber = page ? parseInt(page) : 1;
+    const history = useHistory();
 
     React.useEffect(() => {
-        fetchBooks();
+        fetchBooks(pageNumber, searchText);
         window.scrollTo(0, 0);
-    }, [fetchBooks]);
+    }, [fetchBooks, pageNumber, searchText]);
 
     return (
         <div className={cn.container}>
@@ -19,7 +23,14 @@ export function BooksPage(props) {
                 ))}
             </div>
             <div className={cn.paginationContainer}>
-                <Pagination count={numberOfPages} color="secondary" />
+                <Pagination
+                    page={pageNumber}
+                    count={numberOfPages}
+                    color="secondary"
+                    onChange={(event, nextPageNumber) => {
+                        history.push(`/${nextPageNumber}/${searchText}`);
+                    }}
+                />
             </div>
         </div>
     );
