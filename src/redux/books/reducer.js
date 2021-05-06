@@ -13,7 +13,7 @@ export function booksReducer(state = initialBooksState, action) {
                 return {
                     id: book.id,
                     title: book.book_title,
-                    author: book.book_author.join(' '),
+                    author: book.book_author.join(', '),
                     year: book.book_publication_year,
                     country: book.book_publication_country,
                     city: book.book_publication_city,
