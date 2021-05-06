@@ -5,7 +5,7 @@ import * as cn from './BooksPage.module.css';
 
 export function BooksPage() {
     return (
-        <div>
+        <div className={cn.container}>
             <div className={cn.bookCardsContainer}>
                 <BookCard />
                 <BookCard />
