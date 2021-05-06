@@ -1,8 +1,18 @@
-import { render, screen } from '@testing-library/react';
+import {render, screen} from '@testing-library/react';
 import App from './App';
+import {headerTestIds} from './components/Header/Header';
+import {booksPageTestIds} from './components/BooksPage/BooksPage';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe('test App', () => {
+    it('renders Books Page and Header components', async () => {
+        window.scrollTo = jest.fn();
+
+        render(<App />);
+
+        const header = await screen.findByTestId(headerTestIds.header);
+        expect(header).toBeInTheDocument();
+
+        const booksPage = await screen.findByTestId(booksPageTestIds.booksPage);
+        expect(booksPage).toBeInTheDocument();
+    });
 });

@@ -6,6 +6,11 @@ import TextField from '@material-ui/core/TextField';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {useHistory, Link} from 'react-router-dom';
 
+export const headerTestIds = {
+    loader: 'Loader',
+    header: 'Header',
+};
+
 export function Header(props) {
     const {isLoading} = props;
     const history = useHistory();
@@ -21,13 +26,13 @@ export function Header(props) {
     };
 
     return (
-        <div className={cn.headerContainer}>
+        <div data-testid={headerTestIds.header} className={cn.headerContainer}>
             <div className={cn.logoContainer}>
                 <Link className={cn.title} to={'/'}>
                     Books
                 </Link>
                 {isLoading && (
-                    <div className={cn.loader}>
+                    <div data-testid={headerTestIds.loader} className={cn.loader}>
                         <CircularProgress color="secondary" />
                     </div>
                 )}

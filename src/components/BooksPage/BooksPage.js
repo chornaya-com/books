@@ -4,6 +4,10 @@ import {BookCard} from '../BookCard/BookCard';
 import * as cn from './BooksPage.module.css';
 import {useParams, useHistory} from 'react-router-dom';
 
+export const booksPageTestIds = {
+    booksPage: 'Books Page',
+}
+
 export function BooksPage(props) {
     const {books, numberOfPages, fetchBooks} = props;
     const {page, searchText = ''} = useParams();
@@ -16,7 +20,7 @@ export function BooksPage(props) {
     }, [fetchBooks, pageNumber, searchText]);
 
     return (
-        <div className={cn.container}>
+        <div data-testid={booksPageTestIds.booksPage} className={cn.container}>
             <div className={cn.bookCardsContainer}>
                 {books.map((book) => (
                     <BookCard key={book.id} {...book} />
