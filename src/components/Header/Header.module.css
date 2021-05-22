@@ -1,0 +1,32 @@
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 10px 30px;
+    width: 100%;
+    background-color: #4d6368;
+    height: 60px;
+    position: fixed;
+    top: 0;
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    color: #eff3ed;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.loader {
+    margin-left: 20px;
+}
+
+.inputField {
+    margin-right: 10px;
+}
